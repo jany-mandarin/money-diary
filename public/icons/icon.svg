@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <circle cx="256" cy="256" r="256" fill="#FFF0C9"/>
+  <!-- ears -->
+  <ellipse cx="146" cy="190" rx="56" ry="64" fill="#A9713F"/>
+  <ellipse cx="366" cy="190" rx="56" ry="64" fill="#A9713F"/>
+  <ellipse cx="146" cy="196" rx="30" ry="36" fill="#C99A64"/>
+  <ellipse cx="366" cy="196" rx="30" ry="36" fill="#C99A64"/>
+  <!-- head -->
+  <ellipse cx="256" cy="286" rx="168" ry="150" fill="#F6CD6B"/>
+  <!-- beret -->
+  <path d="M146 198 Q256 110 366 198 Q320 158 256 158 Q192 158 146 198 Z" fill="#8B5A2B"/>
+  <circle cx="256" cy="150" r="16" fill="#8B5A2B"/>
+  <!-- cheeks -->
+  <ellipse cx="176" cy="320" rx="26" ry="18" fill="#FBB6A2" opacity="0.7"/>
+  <ellipse cx="336" cy="320" rx="26" ry="18" fill="#FBB6A2" opacity="0.7"/>
+  <!-- eyes -->
+  <circle cx="210" cy="276" r="12" fill="#543419"/>
+  <circle cx="302" cy="276" r="12" fill="#543419"/>
+  <circle cx="214" cy="271" r="4" fill="#FFF8E7"/>
+  <circle cx="306" cy="271" r="4" fill="#FFF8E7"/>
+  <!-- nose -->
+  <ellipse cx="256" cy="312" rx="20" ry="14" fill="#8B5A2B"/>
+  <!-- mouth -->
+  <path d="M226 336 Q256 356 286 336" stroke="#8B5A2B" stroke-width="8" fill="none" stroke-linecap="round"/>
+</svg>
