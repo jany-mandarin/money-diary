@@ -8,7 +8,7 @@ import {
   setDoc,
   type Firestore
 } from 'firebase/firestore'
-import type { Category, Transaction } from '../types'
+import type { Account, Category, ExchangeRates, Transaction } from '../types'
 import { DEFAULT_CATEGORIES } from '../utils/categories'
 
 export function subscribeTransactions(
@@ -45,4 +45,31 @@ export function subscribeCategories(
 
 export async function saveCategories(db: Firestore, uid: string, categories: Category[]): Promise<void> {
   await setDoc(doc(db, 'users', uid, 'settings', 'categories'), { items: categories })
+}
+
+export function subscribeAccounts(db: Firestore, uid: string, cb: (accounts: Account[]) => void): () => void {
+  const q = query(collection(db, 'users', uid, 'accounts'), orderBy('createdAt', 'asc'))
+  return onSnapshot(q, (snap) => {
+    const accounts: Account[] = []
+    snap.forEach((d) => accounts.push(d.data() as Account))
+    cb(accounts)
+  })
+}
+
+export async function upsertAccount(db: Firestore, uid: string, account: Account): Promise<void> {
+  await setDoc(doc(db, 'users', uid, 'accounts', account.id), account)
+}
+
+export async function removeAccount(db: Firestore, uid: string, id: string): Promise<void> {
+  await deleteDoc(doc(db, 'users', uid, 'accounts', id))
+}
+
+export function subscribeRates(db: Firestore, uid: string, cb: (rates: ExchangeRates | null) => void): () => void {
+  return onSnapshot(doc(db, 'users', uid, 'settings', 'exchangeRates'), (snap) => {
+    cb(snap.exists() ? (snap.data() as ExchangeRates) : null)
+  })
+}
+
+export async function saveRates(db: Firestore, uid: string, rates: ExchangeRates): Promise<void> {
+  await setDoc(doc(db, 'users', uid, 'settings', 'exchangeRates'), rates)
 }

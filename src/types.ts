@@ -34,3 +34,34 @@ export type NewTransaction = Omit<Transaction, 'id' | 'createdAt'>
 export interface UserSettings {
   categories: Category[]
 }
+
+export interface AccountBalance {
+  currency: string // 'TWD' | 'USD' | 'NZD' | 'EUR' | ...
+  amount: number
+}
+
+export type DepositCycle = 'monthly' | 'yearly'
+
+export interface FixedDepositInfo {
+  cycle: DepositCycle
+  rate?: number // 年利率 %，選填
+  maturityDate?: string // YYYY-MM-DD，選填
+}
+
+export interface Account {
+  id: string
+  name: string // 帳戶 / 平台名稱，例如「中國信託」「Wise」
+  balances: AccountBalance[]
+  fixedDeposit?: FixedDepositInfo | null
+  note?: string
+  updatedAt: string // YYYY-MM-DD，對應「計算時間」
+  createdAt: number
+}
+
+export type NewAccount = Omit<Account, 'id' | 'createdAt'>
+
+export interface ExchangeRates {
+  rates: Record<string, number> // 1 單位外幣 = 多少台幣
+  fetchedAt: string // ISO timestamp
+  isManual?: boolean
+}

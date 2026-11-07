@@ -1,10 +1,11 @@
 import type { ReactNode } from 'react'
 
-export type Tab = 'home' | 'summary' | 'installments' | 'settings'
+export type Tab = 'home' | 'summary' | 'assets' | 'installments' | 'settings'
 
 const TABS: { id: Tab; label: string; emoji: string }[] = [
   { id: 'home', label: '紀錄', emoji: '📒' },
   { id: 'summary', label: '總覽', emoji: '🍩' },
+  { id: 'assets', label: '資產', emoji: '🏦' },
   { id: 'installments', label: '分期', emoji: '💳' },
   { id: 'settings', label: '設定', emoji: '⚙️' }
 ]
@@ -56,11 +57,11 @@ export default function Layout({ active, onChange, onAdd, children }: Props) {
 
         {/* Mobile bottom nav */}
         <nav className="sm:hidden fixed bottom-0 inset-x-0 z-30 bg-white border-t-2 border-pudding-200 safe-bottom">
-          <div className="relative flex items-center justify-around px-2 py-2">
+          <div className="relative flex items-center justify-around px-1 py-2">
             {TABS.slice(0, 2).map((t) => (
               <TabButton key={t.id} tab={t} active={active === t.id} onClick={() => onChange(t.id)} />
             ))}
-            <div className="w-16" />
+            <div className="w-14" />
             {TABS.slice(2).map((t) => (
               <TabButton key={t.id} tab={t} active={active === t.id} onClick={() => onChange(t.id)} />
             ))}
@@ -88,9 +89,9 @@ function TabButton({
   onClick: () => void
 }) {
   return (
-    <button onClick={onClick} className="flex flex-col items-center gap-0.5 px-3 py-1 w-16">
-      <span className={`text-xl ${active ? '' : 'opacity-50'}`}>{tab.emoji}</span>
-      <span className={`text-[11px] font-bold ${active ? 'text-cocoa-700' : 'text-cocoa-300'}`}>{tab.label}</span>
+    <button onClick={onClick} className="flex flex-col items-center gap-0.5 px-1 py-1 w-14">
+      <span className={`text-lg ${active ? '' : 'opacity-50'}`}>{tab.emoji}</span>
+      <span className={`text-[10px] font-bold ${active ? 'text-cocoa-700' : 'text-cocoa-300'}`}>{tab.label}</span>
     </button>
   )
 }

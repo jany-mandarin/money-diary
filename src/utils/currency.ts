@@ -5,6 +5,10 @@ export function formatTWD(amount: number): string {
   return `NT$ ${Math.round(amount).toLocaleString('zh-TW')}`
 }
 
+export function formatNumber(amount: number): string {
+  return amount.toLocaleString('zh-TW', { maximumFractionDigits: 2 })
+}
+
 export function formatForeign(amount: number, currency: string): string {
-  return `${currency} ${amount.toLocaleString('zh-TW', { maximumFractionDigits: 2 })}`
+  return currency ? `${currency} ${formatNumber(amount)}` : formatNumber(amount)
 }
