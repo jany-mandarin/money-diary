@@ -7,10 +7,10 @@
 // 在你填入真正的值之前，下面全部維持空字串，App 會自動用「單機模式」運作（資料存在瀏覽器裡）。
 
 export const firebaseConfig = {
-  apiKey: '',
-  authDomain: '',
-  projectId: '',
-  storageBucket: '',
-  messagingSenderId: '',
-  appId: ''
+  apiKey: 'AIzaSyBtlgO7PzX6K71Bs7csKDs5tidLGP3NTzA',
+  authDomain: 'money-diary-f105b.firebaseapp.com',
+  projectId: 'money-diary-f105b',
+  storageBucket: 'money-diary-f105b.firebasestorage.app',
+  messagingSenderId: '939454742079',
+  appId: '1:939454742079:web:3ff0fb96b5527c1645828a'
 }
