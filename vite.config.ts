@@ -9,6 +9,10 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
+      workbox: {
+        skipWaiting: true,
+        clientsClaim: true
+      },
       includeAssets: ['icons/favicon.svg'],
       manifest: {
         name: '布丁記帳 Pudding Ledger',
