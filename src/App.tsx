@@ -111,9 +111,11 @@ export default function App() {
           categories={categories}
           initial={editingTx ?? undefined}
           onSave={(tx) => {
-            if (editingTx) updateTransaction(editingTx.id, tx)
-            else addTransaction(tx)
-            closeSheet()
+            const result = editingTx ? updateTransaction(editingTx.id, tx) : addTransaction(tx)
+            result.then(closeSheet).catch((e) => {
+              console.error(e)
+              alert('儲存失敗，請檢查網路連線後再試一次。')
+            })
           }}
           onClose={closeSheet}
           onDelete={
@@ -131,9 +133,11 @@ export default function App() {
         <AddAccountSheet
           initial={editingAccount ?? undefined}
           onSave={(acc) => {
-            if (editingAccount) updateAccount(editingAccount.id, acc)
-            else addAccount(acc)
-            closeAccountSheet()
+            const result = editingAccount ? updateAccount(editingAccount.id, acc) : addAccount(acc)
+            result.then(closeAccountSheet).catch((e) => {
+              console.error(e)
+              alert('儲存失敗，請檢查網路連線後再試一次。')
+            })
           }}
           onClose={closeAccountSheet}
           onDelete={
